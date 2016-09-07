@@ -36,83 +36,94 @@ the more bug fixes and features.
 
 ## Firefox capabilities
 
-geckodriver supports a capability named `firefoxOptions` which takes
-Firefox-specific preference values. This must be a dictionary and may
-contain any of the following fields:
+Capabilities are options that you can use
+to customise and configure WebDriver sessions.
+geckodriver supports a capability named `firefoxOptions`
+which takes Firefox-specific configuration options.
+It must be a dictionary and may contain any of the following fields:
 
 <table>
-    <thead>
-        <tr>
-            <th>Name
-            <th>Type
-            <th>Default
-            <th>Description
-        </tr>
-    </thead>
-    <tr>
-        <td><code>binary</code>
-        <td><code>string</code>
-        <td>Taken from <code>-b</code> argument
-          or system default location
-        <td>Absolute path of the Firefox binary,
-    e.g. <code>/usr/bin/firefox</code> or <code>/Applications/Firefox.app/Contents/MacOS/firefox</code>,
-    to select which custom browser binary to use.
-    If left undefined geckodriver will attempt
-    to deduce the default location of Firefox
-    on the current system.
-    <tr>
-        <td><code>args</code>
-        <td><code>Array.&ltstring&gt;</code>
-        <td>
-        <td>Command line arguments to pass to the Firefox binary.
-          These must include the leading <code>--</code> where required
-          e.g. <code>["--devtools"]</code>.
-    </tr>
-    <tr>
-        <td><code>profile</code>
-        <td><code>string</code>
-        <td>New, empty profile
-        <td>Base64-encoded zip of a profile directory
-          to use as the profile for the Firefox instance.
-          This may be used to e.g. install extensions or custom certificates.
-    </tr>
-    <tr>
-        <td><code>log</code>
-        <td><a href=#log-options>Log options</a> object
-        <td>
-        <td>Logging options for Gecko.
-    </tr>
-    <tr>
-        <td><code>prefs</code>
-        <td><code>Object&lt;string,&nbsp;(string|boolean|integer)&gt</code>
-        <td>
-        <td>Map of preference name to preference value, which can be a
-            string, a boolean or an integer.
-    </tr>
-</table>
-
-### Log options
-
-<table>
- <thead>
-  <tr>
-   <th>Name
-   <th>Type
-   <th>Default
-   <th>Description
-  </tr>
- </thead>
+ <caption>Object
+ <tr><th>Key <th>Value <th>Description</tr>
 
  <tr>
-  <td><code>level</code>
+  <td><code>binary</code>
   <td>String
-  <td><code>info</code> with optimised Firefox builds,
-   and <code>debug</code> with non-optimised
+  <td>Absolute path to the Firefox binary,
+   e.g. <code>/usr/bin/firefox</code>
+   or <code>/Applications/Firefox.app/Contents/MacOS/firefox</code>,
+   to select which browser to use.
+   If left undefined geckodriver will
+   use the <code>--binary</code> argument
+   or attempt to deduce the default location of Firefox
+   on the current system.
+ </tr>
+
+ <tr>
+  <td><code>args</code>
+  <td>
+   <table>
+    <caption>Array
+    <tr><th>Index <th>Value</tr>
+    <tr><td><var>n</var> <td>String</tr>
+    <tr><td colspan=2>…</tr>
+   </table>
+  <td>Command line arguments to pass to the Firefox binary.
+   These must include the leading <code>--</code> where required
+   e.g. <code>["--devtools"]</code>.
+ </tr>
+
+ <tr>
+  <td><code>profile</code>
+  <td>String
+  <td>Base64-encoded zip of a profile directory
+   to use as the profile for the Firefox instance.
+   This may be used to e.g. install extensions or custom certificates.
+   If left undefined, a new temporary profile will be created.
+ </tr>
+
+ <tr>
+  <td rowspan=2><code>log</code>
+  <td>
+   <table>
+    <caption>Object
+    <tr><th>Key <th>Value</tr>
+    <tr><td><code>level</code> <td>String
+   </table>
   <td>Set the level of verbosity in Gecko.
    Available levels are <code>trace</code>,
    <code>debug</code>, <code>config</code>,
    <code>info</code>, <code>warn</code>,
    <code>error</code>, and <code>fatal</code>.
+   If left undefined, the default is
+   for optimised Firefox builds to use <code>info</code>
+   and non-optimised builds to use <code>debug</code>.
+ </tr>
+
+ <tr>
+  <td>
+   <table>
+    <caption>Object
+    <tr><th>Key <th>Value</tr>
+    <tr><td><code>file</code> <td>String
+   </table>
+  <td>Full path to log file.
+   Just included here for visualisation.
+   Will be removed in the patch.
+ </tr>
+
+ <tr>
+  <td><code>prefs</code>
+  <td>
+   <table>
+    <caption>Object
+    <tr><th>Key <th>Value</tr>
+    <tr><td><var>Preference</var> <td>New value</tr>
+    <tr><td colspan=2>…</tr>
+   </table>
+  <td>A full list of possible preferences
+   along with the expected types
+   can be seen in <a href="about:config">about:config</a>.
  </tr>
 </table>
 
