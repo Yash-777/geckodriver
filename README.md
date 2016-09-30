@@ -104,12 +104,8 @@ It must be a dictionary and may contain any of the following fields:
 
  <tr>
   <td><code>prefs</code>
-  <td>
-   <table>
-    <tr><th>Key <th>Value</tr>
-    <tr><td><var>Preference</var> <td>New value</tr>
-    <tr><td colspan=2>…</tr>
-   </table>
+  <td><var>Preference name</var>
+  <td>String/Number/Boolean
   <td>A full list of possible preferences
    along with the expected types
    can be seen in <a href="about:config">about:config</a>.
