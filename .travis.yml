@@ -48,10 +48,13 @@ matrix:
         - TARGET=i686-pc-windows-gnu
         - NAME=win32
         - EXT=zip
-        - USE_DOCKER=1
+        - TOOLCHAIN=nightly
       dist: trusty
-      services:
-        - docker
+      addons:
+        apt:
+          packages:
+          - gcc-mingw-w64-i686
+          - binutils-mingw-w64-i686
     - os: osx
       env:
         - TARGET=x86_64-apple-darwin

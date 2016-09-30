@@ -7,7 +7,7 @@ print_versions() {
 
 rustup_install() {
     export PATH="$PATH:$HOME/.cargo/bin"
-    curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain=beta
+    curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain=$1
 }
 
 # Add provided target to current Rust toolchain if it is not already
@@ -45,6 +45,9 @@ cargo_config() {
     x86_64-pc-windows-gnu)
         prefix=x86_64-w64-mingw32
         ;;
+    i686-pc-windows-gnu)
+        prefix=i686-w64-mingw32
+        ;;
     *)
         return
         ;;
@@ -55,6 +58,8 @@ cargo_config() {
 [target.$TARGET]
 linker = "$prefix-gcc"
 EOF
+
+    cat ~/.cargo/config
 }
 
 # Build current crate for given target and print file type information.
@@ -122,12 +127,14 @@ package_binary() {
 }
 
 main() {
+    TOOLCHAIN=${TOOLCHAIN:=beta}
+
     if [ ! -z "$USE_DOCKER" ]
     then
         setup_docker
         print_versions
     else
-        rustup_install
+        rustup_install $TOOLCHAIN
         print_versions
         rustup_target_add $TARGET
     fi
