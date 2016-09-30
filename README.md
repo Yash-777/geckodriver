@@ -79,14 +79,8 @@ It must be a dictionary and may contain any of the following fields:
    If left undefined, a new temporary profile will be created.
  </tr>
 
- <!--
  <tr>
   <td rowspan=2><code>log</code>
-  -->
-
- <tr>
-  <td rowspan="3"><code>log</code>
-  <td colspan="2">Object
  </tr>
  <tr>
   <td><code>level</code>
@@ -103,18 +97,6 @@ It must be a dictionary and may contain any of the following fields:
  <tr>
   <td><code>file</code>
   <td>String
-  <td>Full path to log file.
-   Just included here for visualisation.
-   Will be removed in the patch.
- </tr>
-
- <tr>
-  <td>
-   <table>
-    <caption>Object
-    <tr><th>Key <th>Value</tr>
-    <tr><td><code>file</code> <td>String
-   </table>
   <td>Full path to log file.
    Just included here for visualisation.
    Will be removed in the patch.
