@@ -48,7 +48,7 @@ matrix:
         - TARGET=i686-pc-windows-gnu
         - NAME=win32
         - EXT=zip
-        - TOOLCHAIN=nightly
+        - TOOLCHAIN=beta
       dist: trusty
       addons:
         apt:
