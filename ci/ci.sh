@@ -15,7 +15,7 @@ then
            -e GROUP_ID=$(id -g)\
            -v $PWD:/mnt/host\
            -i $tag\
-           bash -s -- < build.sh
+           bash -s -- < ci/build.sh
 else
-    bash build.sh
+    bash ci/build.sh
 fi
