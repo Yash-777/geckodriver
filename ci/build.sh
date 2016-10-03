@@ -129,8 +129,6 @@ package_binary() {
 main() {
     TOOLCHAIN=${TOOLCHAIN:=beta}
 
-    cd ..
-
     if [ ! -z "$USE_DOCKER" ]
     then
         setup_docker
