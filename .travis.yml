@@ -59,7 +59,7 @@ matrix:
         - EXT=tar.gz
 
 script:
-  - bash ci.sh
+  - bash ci/ci.sh
 
 deploy:
   provider: releases
