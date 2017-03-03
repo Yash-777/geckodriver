@@ -4,6 +4,7 @@ print_versions() {
     rustc -V
     cargo -V
     cc --version
+    dpkg -l | grep libc-dev
 }
 
 rustup_install() {
