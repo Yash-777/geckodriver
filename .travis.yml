@@ -40,6 +40,7 @@ matrix:
       addons:
         apt:
           packages: &i686
+          - build-essential
           - musl-tools
           - gcc-multilib
           - libbz2-dev
