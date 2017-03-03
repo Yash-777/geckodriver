@@ -136,6 +136,7 @@ package_binary() {
 
 main() {
     TOOLCHAIN=${TOOLCHAIN:=stable}
+    CC=${CC:=gcc}
 
     if [ ! -z "$DOCKER_IMAGE" ]
     then
